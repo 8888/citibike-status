@@ -17,61 +17,60 @@ const fetchStation = async (resource) => (await fetch(buildCitiBikeUrl(resource)
 const fetchStationsInformation = async () => fetchStation(stationInformationResource);
 const fetchStationsStatus = async () => fetchStation(stationStatusResource);
 
-const STATIONS = {
+// Constant Station Information
+const LEE_STATIONS = {
   '347': {
     name: 'Greenwich St & W Houston St',
-    customName: 'Greenwich',
+    displayName: 'Greenwich',
     priority: 1,
   },
   '3256': {
     name: 'Pier 40 - Hudson River Park',
-    customName: 'Pier 40',
+    displayName: 'Pier 40',
     priority: 2,
   },
   '128': {
     name: 'MacDougal St & Prince St',
-    customName: 'Macdougal',
+    displayName: 'Macdougal',
     priority: 3,
   },
   '3746': {
     name: '6 Ave & Broome St',
-    customName: 'Broome',
+    displayName: 'Broome',
     priority: 4,
   },
 };
 
-const createStationIdList = (stations) => {
-  return Object.keys(stations);
-}
+// Application Support Functions
+const stationIds = (stations) => Object.keys(stations);
 
-const filterStations = (allStations, neededStationsIds) => {
-  return allStations.filter(station => neededStationsIds.includes(station.station_id))
-}
+const filterStations = (stations, ids) => stations.filter(station => ids.includes(station.station_id))
 
-const buildReport = (stations, status) => {
-  return status.map(station => {
-    return {...STATIONS[station.station_id], ...station};
+const buildStationStatus = (stations) =>
+  stations.map(station => {
+    const lee = LEE_STATIONS[station.station_id];
+    return {
+      displayName: lee.displayName,
+      dockCount: station.num_docks_available,
+      priority: lee.priority
+    };
   });
+
+const sortByPriority = (stations) => stations.sort((a, b) => a.priority - b.priority);
+
+const buildMessage = (stations) => {
+  const introduction = 'Bike Update!';
+  const stationInfo = stations.map(station => `${station.displayName} has ${station.dockCount} docks.`)
+  return `${introduction} ${stationInfo.join(' ')}`;
 }
 
-const prioritize = (status) => {
-  return status.sort((a, b) => a.priority - b.priority);
-}
+// Main Application Code
+const ids = stationIds(LEE_STATIONS);
+const allStationStatus = await fetchStationsStatus();
+const stations = filterStations(allStationStatus, ids);
 
-const buildMessage = (status) => {
-  let message = 'Bike Update!';
-  status.forEach(station => {
-    message += ` At ${station.customName} there are ${station.num_docks_available} docks.`
-  });
-  return message;
-}
-
-const allStatus = await fetchStationsStatus();
-const stationIds = createStationIdList(STATIONS);
-const filteredStations = filterStations(allStatus, stationIds);
-const report = buildReport(STATIONS, filteredStations);
-const sortedReport = prioritize(report);
+const stationsReport = buildStationStatus(stations);
+const sortedReport = sortByPriority(stationsReport);
 const message = buildMessage(sortedReport);
 
-console.log(message)
-//Script.setShortcutOutput(message);
+Script.setShortcutOutput(message);
