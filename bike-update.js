@@ -1,40 +1,21 @@
-/* setup functions when adding new stations */
+/* https://github.com/8888/citibike-status
+ * Citi Bike dock availability with JavaScript ES6 and [Scriptable](https://scriptable.app/).
+ * This script queries Citi Bike's public APIs to output stations which have docks available.
+ */
 
-const fetchStationStatus = async (id) => {
-  const url = 'http://gbfs.citibikenyc.com/gbfs/es/station_status.json';
-  const r = new Request(url);
-  const data = await r.loadJSON();
-  const station = data.data.stations.find(station => station.station_id === id)
-  console.log(station);
-};
+// Citi Bike Endpoint URL Building
+const citibikeEndpointUrl = 'http://gbfs.citibikenyc.com/gbfs'
+const languageCode = 'en'
+const stationInformationResource = 'station_information';
+const stationStatusResource = 'station_status';
+const buildCitiBikeUrl = (resource) => `${citibikeEndpointUrl}/${languageCode}/${resource}.json`;
 
-const fetchStationInformation = async (name) => {
-  const url = 'http://gbfs.citibikenyc.com/gbfs/es/station_information.json';
-  const r = new Request(url);
-  const data = await r.loadJSON();
-  const station = data.data.stations.find(station => station.name === name);
-  //console.log(data.data.stations[0]);
-  console.log(station);
-};
+// Fetch URL Resource
+const fetch = async (url) => await new Request(url).loadJSON();
+const fetchStation = async (resource) => (await fetch(buildCitiBikeUrl(resource))).data.stations;
 
-/*
-Sample output data structure 
-{
-"id":"347",
-"name":"Greenwich St & W Houston St",
-"num_docks_available":25,
-"num_bikes_disabled":0,
-"num_ebikes_available":0,
-"num_docks_disabled":0,
-"num_bikes_available":10,
-"is_renting":1,
-"is_returning":1,
-"station_id":"347",
-"is_installed":1,
-"last_reported":1581169365,
-"eightd_has_available_keys":false
-}
-*/
+const fetchStationsInformation = async () => fetchStation(stationInformationResource);
+const fetchStationsStatus = async () => fetchStation(stationStatusResource);
 
 const STATIONS = {
   '347': {
@@ -57,12 +38,6 @@ const STATIONS = {
     customName: 'Broome',
     priority: 4,
   },
-};
-
-const fetchAllStationsStatus = async () => {
-  const url = 'http://gbfs.citibikenyc.com/gbfs/es/station_status.json';
-  const response = await new Request(url).loadJSON();
-  return response.data.stations;
 };
 
 const createStationIdList = (stations) => {
@@ -91,9 +66,7 @@ const buildMessage = (status) => {
   return message;
 }
 
-//fetchStationInformation(STATIONS['1'].name);
-
-const allStatus = await fetchAllStationsStatus();
+const allStatus = await fetchStationsStatus();
 const stationIds = createStationIdList(STATIONS);
 const filteredStations = filterStations(allStatus, stationIds);
 const report = buildReport(STATIONS, filteredStations);
@@ -101,4 +74,4 @@ const sortedReport = prioritize(report);
 const message = buildMessage(sortedReport);
 
 console.log(message)
-Script.setShortcutOutput(message);
+//Script.setShortcutOutput(message);
