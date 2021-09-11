@@ -1,8 +1,8 @@
 # citibike-status
-iOS shortcut enabled citibike dock updates. This is a simple script that queries Citibike's public station status APIs and outputs a string describing which stations have docks available. It is meant to be called as part of an iOS shortcut that will be executed based on GPS location when near the desired Citibike docks. The shortcut will automatically have Siri read the output message so I do not have to use my phone will riding the bike.
+Citi Bike dock availability with JavaScript ES6 and [Scriptable](https://scriptable.app/). This script queries Citi Bike's public APIs to output stations which have docks available.
 
 # environment
-This was written in and meant to run in the iOS javascript editor and interpreter [Scriptable](https://scriptable.app/).
+This was written in and executed in the iOS JavaScript ES6 editor and interpreter [Scriptable](https://scriptable.app/). This allows the code to be accessed as an iOS shortcut. With a variety of triggers, you can call the script based off GPS location. The ouput will be automatically read by Siri so your phone does not have to be used while biking.
 
 # iOS shortcuts
 ### shortcut config
