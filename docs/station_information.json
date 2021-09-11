@@ -1,0 +1,24 @@
+{
+  "lat": 40.73172428,
+  "station_id": "127",
+  "rental_uris": {
+    "android": "https://bkn.lft.to/lastmile_qr_scan",
+    "ios": "https://bkn.lft.to/lastmile_qr_scan"
+  },
+  "legacy_id": "127",
+  "lon": -74.00674436,
+  "short_name": "5805.05",
+  "external_id": "66db2a71-0aca-11e7-82f6-3863bb44ef7c",
+  "station_type": "classic",
+  "name": "Barrow St & Hudson St",
+  "electric_bike_surcharge_waiver": false,
+  "has_kiosk": true,
+  "rental_methods": [
+    "KEY",
+    "CREDITCARD"
+  ],
+  "eightd_has_key_dispenser": false,
+  "eightd_station_services": [],
+  "region_id": "71",
+  "capacity": 31
+}
