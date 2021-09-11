@@ -1,16 +1,5 @@
 /* setup functions when adding new stations */
 
-const fetchFeeds = async () => {
-  const url = 'http://gbfs.citibikenyc.com/gbfs/gbfs.json';
-  const r = new Request(url);
-  const data = await r.loadJSON();
-  data.data.es.feeds.forEach(feed => {
-    console.log(feed.name);
-    console.log(feed.url);
-    console.log('-------');
-  });
-};
-
 const fetchStationStatus = async (id) => {
   const url = 'http://gbfs.citibikenyc.com/gbfs/es/station_status.json';
   const r = new Request(url);
