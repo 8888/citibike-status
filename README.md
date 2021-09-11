@@ -2,9 +2,11 @@
 Citi Bike dock availability with JavaScript ES6 and [Scriptable](https://scriptable.app/). This script queries Citi Bike's public APIs to output stations which have docks available.
 
 # environment
-This was written in and executed in the iOS JavaScript ES6 editor and interpreter [Scriptable](https://scriptable.app/). This allows the code to be accessed as an iOS shortcut. With a variety of triggers, you can call the script based off GPS location. The ouput will be automatically read by Siri so your phone does not have to be used while biking.
+This was written in and executed in the iOS JavaScript ES6 editor and interpreter [Scriptable](https://scriptable.app/). This allows the code to be accessed as an iOS shortcut. With a variety of triggers, you can call the script based off GPS location, and setup the output message to be read by Siri
 
 # iOS shortcuts
+<img src="./ios_shortcut.jpeg" width="250" />
+
 ### shortcut config
 ```yml
 scriptable:
