@@ -1,0 +1,40 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -74.00674436,
+      40.73172428
+    ]
+  },
+  "properties": {
+    "station_id": "127",
+    "name": "Barrow St & Hudson St",
+    "terminal": "5805.05",
+    "capacity": 31,
+    "bikes_available": 20,
+    "docks_available": 9,
+    "bikes_disabled": 2,
+    "docks_disabled": 0,
+    "renting": true,
+    "returning": true,
+    "ebike_surcharge_waiver": false,
+    "installed": true,
+    "last_reported": 1631396991,
+    "icon_pin_bike_layer": "pin-bike-green-most",
+    "icon_pin_dock_layer": "pin-dock-green-half",
+    "icon_dot_bike_layer": "dot-green",
+    "icon_dot_dock_layer": "dot-green",
+    "ebikes_available": 1,
+    "bike_angels_action": "neutral",
+    "bike_angels_points": 0,
+    "bike_angels_digits": 0,
+    "valet_status": "none",
+    "ebikes": [
+      {
+        "bike_number": "36786",
+        "charge": 2
+      }
+    ]
+  }
+}
