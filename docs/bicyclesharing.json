@@ -1,0 +1,33 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -73.99392888,
+      40.76727216
+    ]
+  },
+  "properties": {
+    "bikes_disabled": 3,
+    "capacity": 55,
+    "ebike_surcharge_waiver": false,
+    "bike_angels_points": 4,
+    "docks_disabled": 0,
+    "last_reported": 1631458651,
+    "docks_available": 50,
+    "returning": true,
+    "valet_status": "none",
+    "name": "W 52 St & 11 Ave",
+    "installed": true,
+    "terminal": "6926.01",
+    "bikes_available": 2,
+    "bike_angels_digits": 1,
+    "bike_angels_action": "give",
+    "icon_dot_dock_layer": "dot-green",
+    "icon_pin_dock_layer": "pin-dock-green-most",
+    "station_id": "72",
+    "renting": true,
+    "icon_pin_bike_layer": "pin-bike-yellow",
+    "icon_dot_bike_layer": "dot-yellow"
+  }
+}
