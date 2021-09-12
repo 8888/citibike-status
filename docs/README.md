@@ -3,10 +3,23 @@ Citi Bike dock availability with JavaScript ES6 and [Scriptable](https://scripta
 ](https://github.com/NABSA/gbfs/blob/master/gbfs.md).
 
 # environment
-This was written in and executed in the iOS JavaScript ES6 editor and interpreter [Scriptable](https://scriptable.app/). This allows the code to be accessed as an iOS shortcut. With a variety of triggers, you can call the script based off GPS location, and setup the output message to be read by Siri
+This was written in and executed in the iOS JavaScript ES6 editor and interpreter [Scriptable](https://scriptable.app/). This allows the code to be accessed as an [iOS shortcut](https://support.apple.com/guide/shortcuts/welcome/ios). With a variety of triggers, you can call the script based off GPS location, and setup the output message to be read by Siri
 
 # iOS shortcuts
-<img src="./ios_shortcut.jpeg" width="250" />
+With the Scriptable app installed, you'll see the option to reference them in shortcuts. You can pass parameters in, and send the output of your script to other steps.
+
+## Configurations
+
+<table>
+  <tr>
+    <td>Setting output as spoken from Siri</td>
+    <td>Using Current Location Latitude / Longitude</td>
+  </tr>
+  <tr>
+    <td><img src="./shortcut_speak.jpeg" width="250" /></td>
+    <td><img src="./shortcut_current_location.jpeg" width="250" /></td>
+  </tr>
+</table>
 
 ### shortcut config
 ```yml
