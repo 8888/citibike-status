@@ -21,6 +21,7 @@ const fetchStationsStatus = async () => fetchStation(stationStatusResource);
 // Main Application Code
 
 const absoluteDistance = 0.00003;
+
 let lat, lon;
 [lat, lon] = args.shortcutParameter;
 
@@ -51,3 +52,11 @@ stations = stations.map(s => {
 
 stations.sort((a, b) => a.delta - b.delta);
 stations.filter(s => s.ebikes).map(s => console.log(s));
+
+const ebikeFormat = (station) => `${station.name} - ${station.ebikes} e-bikes`;
+const bikeFormat = (station) => `${station.name} - ${station.bikes} bikes`;
+
+const ebikeMessages = stations.filter(s => s.ebikes).map(s => ebikeFormat(s));
+const bikeMessages = stations.filter(s => !s.ebikes && s.bikes).map(s => bikeFormat(s));
+
+Script.setShortcutOutput(ebikeMessages.concat(bikeMessages).slice(0, 5));
